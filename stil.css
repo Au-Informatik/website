@@ -182,9 +182,9 @@ header a.logo.firma b { color: var(--rot); font-weight: 700; }
 }
 .saeule .kopf { height: 150px; display: flex; align-items: flex-end; justify-content: center; position: relative; overflow: hidden; }
 .saeule .kopf .marke { position: absolute; left: 20px; top: 18px; font: 700 26px 'Fredoka', system-ui, sans-serif; color: #fff; }
-.saeule.spiel .kopf { background: var(--himmel); background-image: radial-gradient(var(--himmel-punkt) 2px, transparent 2.2px); background-size: 18px 18px; }
+.saeule.spiel .kopf { background: var(--himmel); }
 .saeule.spiel .kopf .marke { font-family: 'Luckiest Guy', 'Arial Black', sans-serif; font-weight: 400; font-size: 34px; color: var(--rot); -webkit-text-stroke: 1.5px var(--tinte); }
-.saeule.spiel .kopf img { height: 140px; width: auto; margin: 0 0 -8px 90px; }
+.saeule.spiel .kopf img { height: 136px; width: auto; margin: 0 0 6px 90px; }
 /* Farben der Standbeine (Auftraggeber 3.11.2026): Play hellblau, Feel klares
    Violett, See dunkles Grün, Learn neutral (Schwarz/Grau) */
 .saeule.wohl .kopf { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
@@ -227,7 +227,7 @@ header a.logo.firma b { color: var(--rot); font-weight: 700; }
 .spiel-held .spiel-unter { display: inline-block; margin: 8px 0 18px; padding: 4px 16px; border-radius: 999px; background: #fff; border: 2px solid var(--tinte); font: 700 17px 'Fredoka', system-ui, sans-serif; color: var(--tinte); }
 .spiel-held h1 { font-size: clamp(28px, 3.4vw, 44px); line-height: 1.1; margin: 0 0 14px; color: var(--tinte); }
 .spiel-held p { color: #1d2a3a; font-size: 18px; margin: 0 0 18px; }
-.spiel-figur { height: clamp(220px, 30vw, 380px); width: auto; margin-bottom: -10px; filter: drop-shadow(0 6px 0 rgba(23,23,26,.18)); }
+.spiel-figur { height: clamp(220px, 30vw, 380px); width: auto; margin-bottom: 14px; filter: drop-shadow(0 6px 0 rgba(23,23,26,.18)); }
 .spiel-knoepfe { display: flex; gap: 12px; flex-wrap: wrap; }
 .knopf { display: inline-block; padding: 12px 22px; border-radius: 999px; background: var(--tinte); color: #fff; text-decoration: none; font: 700 17px 'Fredoka', system-ui, sans-serif; border: 2px solid var(--tinte); }
 .knopf.hell { background: #fff; color: var(--tinte); }
