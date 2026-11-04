@@ -12,7 +12,6 @@
   --rot: #d8443c;
   --blau: #2f5fb0;
   --himmel: #6abcfc;       /* wie Startbild und App-Symbol */
-  --himmel-punkt: #55aaee;
   --tinte: #17171a;
   --karte: #ffffff;
   --linie: #e6dfcf;
@@ -79,12 +78,10 @@ h3 { font-size: 19px; margin: 0 0 6px; }
 .knopf span { line-height: 1.15; text-align: left; }
 .knopf.hell { background: transparent; color: var(--tinte); box-shadow: none; border: 2px solid var(--tinte); }
 
-/* Startseite: Held auf himmelblauem Comic-Raster */
+/* Held auf himmelblauer Fläche (ohne Punkte, Auftraggeber 4.11.) */
 .held {
   position: relative; overflow: hidden; border-radius: 28px; margin: 4px 0 8px;
-  background: var(--himmel);
-  background-image: radial-gradient(var(--himmel-punkt) 2.2px, transparent 2.4px);
-  background-size: 22px 22px; color: var(--tinte);
+  background: var(--himmel); color: var(--tinte);
   display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 12px;
   padding: 48px 48px 0; border: 3px solid var(--tinte); box-shadow: 0 8px 0 var(--tinte);
 }
@@ -219,8 +216,6 @@ header a.logo.firma b { color: var(--rot); font-weight: 700; }
   margin: 24px 0 8px; padding: clamp(24px, 4vw, 56px) clamp(20px, 4vw, 56px) 0;
   border-radius: 28px; overflow: hidden;
   background: var(--himmel);
-  background-image: radial-gradient(var(--himmel-punkt) 2.2px, transparent 2.4px);
-  background-size: 20px 20px;
 }
 .spiel-text { padding-bottom: clamp(24px, 4vw, 56px); max-width: 40em; }
 .spiel-held .spiel-marke { font-family: 'Luckiest Guy', 'Arial Black', sans-serif; font-size: clamp(64px, 9vw, 112px); line-height: .9; margin: 0; color: var(--rot); -webkit-text-stroke: 3px var(--tinte); }
