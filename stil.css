@@ -11,8 +11,8 @@
   --leise: #5b616b;
   --rot: #d8443c;
   --blau: #2f5fb0;
-  --gelb: #ffd54a;
-  --gelb-punkt: #f2b705;
+  --himmel: #6abcfc;       /* wie Startbild und App-Symbol */
+  --himmel-punkt: #55aaee;
   --tinte: #17171a;
   --karte: #ffffff;
   --linie: #e6dfcf;
@@ -42,8 +42,10 @@ img { max-width: 100%; height: auto; }
 a { color: var(--blau); }
 
 /* Unterseiten: schmale Spalte */
-main { max-width: 760px; margin: 0 auto; padding: 0 16px 64px; }
-.breit { max-width: 1120px; }
+main { max-width: 860px; margin: 0 auto; padding: 0 16px 64px; }
+/* Startseite: wächst mit dem Bildschirm (Feedback 4.11.: am grossen Bildschirm
+   blieb links und rechts viel leer), Rand wächst mit */
+.breit { max-width: 1600px; padding-left: clamp(16px, 4vw, 56px); padding-right: clamp(16px, 4vw, 56px); }
 
 /* Kopf */
 header { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; padding: 18px 0; margin-bottom: 8px; }
@@ -77,11 +79,11 @@ h3 { font-size: 19px; margin: 0 0 6px; }
 .knopf span { line-height: 1.15; text-align: left; }
 .knopf.hell { background: transparent; color: var(--tinte); box-shadow: none; border: 2px solid var(--tinte); }
 
-/* Startseite: Held auf gelbem Comic-Raster */
+/* Startseite: Held auf himmelblauem Comic-Raster */
 .held {
   position: relative; overflow: hidden; border-radius: 28px; margin: 4px 0 8px;
-  background: var(--gelb);
-  background-image: radial-gradient(var(--gelb-punkt) 2.2px, transparent 2.4px);
+  background: var(--himmel);
+  background-image: radial-gradient(var(--himmel-punkt) 2.2px, transparent 2.4px);
   background-size: 22px 22px; color: var(--tinte);
   display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 12px;
   padding: 48px 48px 0; border: 3px solid var(--tinte); box-shadow: 0 8px 0 var(--tinte);
@@ -122,7 +124,7 @@ section.block > p.lead { color: var(--leise); font-size: 18px; margin: 0 0 24px;
   overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 2px 18px; margin: 0 -2px;
   -webkit-overflow-scrolling: touch;
 }
-.galerie img { width: 230px; border-radius: 22px; scroll-snap-align: start; box-shadow: var(--schatten); background: var(--gelb); }
+.galerie img { width: 230px; border-radius: 22px; scroll-snap-align: start; box-shadow: var(--schatten); background: var(--himmel); }
 
 /* Neu / Studio */
 .zweispaltig { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -160,4 +162,90 @@ footer a { color: var(--leise); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .knopf { transition: none; }
+}
+
+/* Firmenseite (au-informatik.com): ruhiger als die Spielseite */
+header a.logo.firma {
+  font-family: 'Fredoka', system-ui, sans-serif; font-weight: 700; font-size: 24px;
+  color: var(--text); -webkit-text-stroke: 0; letter-spacing: 0;
+}
+header a.logo.firma b { color: var(--rot); font-weight: 700; }
+.firma-held { padding: 56px 0 24px; max-width: 52em; }
+.firma-held .ueber { font: 700 14px 'Fredoka', system-ui, sans-serif; letter-spacing: 1.5px; text-transform: uppercase; color: var(--leise); margin: 0 0 12px; }
+.firma-held h1 { font-size: clamp(34px, 5vw, 54px); line-height: 1.08; margin: 0 0 18px; }
+.firma-held h1 em { font-style: normal; color: var(--rot); }
+.firma-held p { font-size: 19px; color: var(--leise); margin: 0; }
+.saeulen { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 1.6vw, 26px); margin: 32px 0 0; }
+.saeule {
+  background: var(--karte); border: 1px solid var(--linie); border-radius: 20px; padding: 0 0 22px;
+  box-shadow: var(--schatten); overflow: hidden; display: flex; flex-direction: column;
+}
+.saeule .kopf { height: 150px; display: flex; align-items: flex-end; justify-content: center; position: relative; overflow: hidden; }
+.saeule .kopf .marke { position: absolute; left: 20px; top: 18px; font: 700 26px 'Fredoka', system-ui, sans-serif; color: #fff; }
+.saeule.spiel .kopf { background: var(--himmel); background-image: radial-gradient(var(--himmel-punkt) 2px, transparent 2.2px); background-size: 18px 18px; }
+.saeule.spiel .kopf .marke { font-family: 'Luckiest Guy', 'Arial Black', sans-serif; font-weight: 400; font-size: 34px; color: var(--rot); -webkit-text-stroke: 1.5px var(--tinte); }
+.saeule.spiel .kopf img { height: 140px; width: auto; margin: 0 0 -8px 90px; }
+/* Farben der Standbeine (Auftraggeber 3.11.2026): Play hellblau, Feel klares
+   Violett, See dunkles Grün, Learn neutral (Schwarz/Grau) */
+.saeule.wohl .kopf { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+.saeule.analyse .kopf { background: linear-gradient(135deg, #1f6b45, #0f3d27); }
+.saeule.lernen .kopf { background: linear-gradient(135deg, #4a4c53, #17171a); }
+.saeule .kopf .zeichen-gross { font-size: 64px; line-height: 1; margin: 0 0 24px 120px; opacity: .95; }
+.saeule .inhalt { padding: 18px 22px 0; flex: 1; display: flex; flex-direction: column; }
+.saeule .bereich { font: 700 13px 'Fredoka', system-ui, sans-serif; letter-spacing: 1.2px; text-transform: uppercase; color: var(--leise); margin: 0 0 4px; }
+.saeule h3 { font-size: 21px; margin: 0 0 8px; }
+.saeule p { margin: 0 0 12px; color: var(--leise); font-size: 16px; }
+.saeule .status { align-self: flex-start; margin-top: auto; display: inline-block; font: 600 13px 'Fredoka', system-ui, sans-serif; padding: 3px 10px; border-radius: 999px; background: var(--grund); border: 1px solid var(--linie); color: var(--text); }
+.saeule .weiter { padding: 0 22px; margin: 14px 0 0; min-height: 1.4em; font: 600 15px 'Fredoka', system-ui, sans-serif; }
+.grundsaetze { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.grundsaetze h3 { font-size: 18px; }
+.grundsaetze p { margin: 0; color: var(--leise); font-size: 16px; }
+@media (max-width: 1100px) {
+  .saeulen { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .grundsaetze { grid-template-columns: 1fr; }
+}
+
+/* Handy: die Standbeine untereinander (nach der Regel für mittlere Breiten) */
+@media (max-width: 560px) {
+  .saeulen { grid-template-columns: 1fr; }
+}
+
+/* Spielseite AU! (spiel.html, en/game.html): Kopf im Himmelblau von Startbild
+   und App-Symbol, Handy-Ansichten aus den Store-Bildern 1.5 */
+.spiel-held {
+  display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 24px;
+  margin: 24px 0 8px; padding: clamp(24px, 4vw, 56px) clamp(20px, 4vw, 56px) 0;
+  border-radius: 28px; overflow: hidden;
+  background: var(--himmel);
+  background-image: radial-gradient(var(--himmel-punkt) 2.2px, transparent 2.4px);
+  background-size: 20px 20px;
+}
+.spiel-text { padding-bottom: clamp(24px, 4vw, 56px); max-width: 40em; }
+.spiel-held .spiel-marke { font-family: 'Luckiest Guy', 'Arial Black', sans-serif; font-size: clamp(64px, 9vw, 112px); line-height: .9; margin: 0; color: var(--rot); -webkit-text-stroke: 3px var(--tinte); }
+.spiel-held .spiel-unter { display: inline-block; margin: 8px 0 18px; padding: 4px 16px; border-radius: 999px; background: #fff; border: 2px solid var(--tinte); font: 700 17px 'Fredoka', system-ui, sans-serif; color: var(--tinte); }
+.spiel-held h1 { font-size: clamp(28px, 3.4vw, 44px); line-height: 1.1; margin: 0 0 14px; color: var(--tinte); }
+.spiel-held p { color: #1d2a3a; font-size: 18px; margin: 0 0 18px; }
+.spiel-figur { height: clamp(220px, 30vw, 380px); width: auto; margin-bottom: -10px; filter: drop-shadow(0 6px 0 rgba(23,23,26,.18)); }
+.spiel-knoepfe { display: flex; gap: 12px; flex-wrap: wrap; }
+.knopf { display: inline-block; padding: 12px 22px; border-radius: 999px; background: var(--tinte); color: #fff; text-decoration: none; font: 700 17px 'Fredoka', system-ui, sans-serif; border: 2px solid var(--tinte); }
+.knopf.hell { background: #fff; color: var(--tinte); }
+.spiel-bilder { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(12px, 1.6vw, 26px); margin: 36px 0 0; }
+.spiel-bilder figure { margin: 0; text-align: center; }
+.spiel-bilder img { width: 100%; border: 6px solid var(--tinte); border-radius: 28px; background: var(--tinte); box-shadow: var(--schatten); }
+.spiel-bilder figcaption { margin-top: 10px; font: 700 16px 'Fredoka', system-ui, sans-serif; }
+.grundsaetze.vier { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1100px) {
+  .grundsaetze.vier { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .spiel-held { grid-template-columns: 1fr; }
+  .spiel-figur { justify-self: end; height: 220px; margin-top: -40px; }
+  .spiel-bilder { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 46%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+  .spiel-bilder figure { scroll-snap-align: start; }
+}
+@media (max-width: 560px) {
+  .spiel-bilder { grid-auto-columns: 70%; }
+  .grundsaetze.vier { grid-template-columns: 1fr; }
 }

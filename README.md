@@ -1,2 +1,3 @@
 # website
-Public Website for Au-Informatik Mobile App Development
+Öffentliche Webseite von Au-Informatik – https://au-informatik.com (GitHub Pages).
+Quelle: Ordner website/ im Projekt-Repository, hierher übertragen.
